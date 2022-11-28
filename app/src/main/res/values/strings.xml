@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">My Splash Andy</string>
+    <string name="usuario_label">Usuario</string>
+    <string name="password_label">Password</string>
+    <string name="olvcontraseña">Olvidé mi contraseña</string>
+    <string name="login">Login</string>
+    <string name="registro">Registrarse</string>
+    <string name="Email">Correo electronico</string>
+    <string name="prefiere">¿Que prefieres?</string>
+    <string name="amigos">tacos</string>
+    <string name="trabajo">pozole</string>
+    <string name="publicidad">mole</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="genero">Genero</string>
+    <string name="fec_nac">Fecha de nacimiento</string>
+    <string name="numero">Número celular</string>
+    <string name="in">55</string>
+    <string name="inicio_sesion">Iniciar sesión</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="region">Región</string>
+    <string name="name">Nombre</string>
+    <string name="pick">pick</string>
+    <string name="agregar">Agregar contraseña</string>
+    <string name="cs">Cerrar Sesión</string>
+    <string name="w">Welcome to the jungle</string>
+    <string name="Recuperar">Recuperar</string>
 </resources>

@@ -1,18 +1,26 @@
 package com.example.mysplashandy;
 
+import static com.example.mysplashandy.Registrar.archivo;
+
+
 import androidx.core.util.PatternsCompat;
 
 import com.example.mysplashandy.json.MyInfo;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Metodo {
-    public static final String TAG = "Andygow2022";
+    public static final String TAG = "Andygow";
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
-
-
+    //Metodos Sha1
     public static byte[] createSha1( String text )
     {
         MessageDigest messageDigest = null;
@@ -46,52 +54,51 @@ public class Metodo {
         }
         return new String(hexChars);
     }
-
-
+    //Metodos validacion
     public static boolean validarEmail(String email){
-        boolean fl;
+        boolean bandera;
         if(email.isEmpty()){
-            fl=false;
+            bandera=false;
         }else{
             if(PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()){
-                fl=true;
+                bandera=true;
             }else{
-                fl=false;
+                bandera=false;
             }
         }
-        return fl;
+        return bandera;
     }
-    public static boolean usuar(List<MyInfo> list, String usu){
-        boolean fl = false;
+    public static boolean usuarios(List<MyInfo> list, String usr,String correo){
+        boolean bandera = false;
         for(MyInfo informacion : list){
-            if(informacion.getNombre().equals(usu)){
-                fl=true;
+            if(informacion.getUsuario().equals(usr) || informacion.getCorreo().equals(correo)){
+                bandera=true;
             }
         }
-        return fl;
+        return bandera;
     }
-
+    //Metodos JSON el getFile tiene bug
+    //Metodo de llenado
     public static void fillInfo(MyInfo info){
-        info.setNombre(Registrar.usu);
-        String pass = Registrar.password + Registrar.usu;
-        info.setContrasena(bytesToHex(createSha1(pass)));
-        info.setEdad(Registrar.ed);
-        info.setNumero(Registrar.tel);
-        info.setFecha(Registrar.dat);
-        info.setEscuela(Registrar.chec);
-        info.setCorreo(Registrar.ecor);
-        info.setGen(Registrar.on);
-        info.setNoti(Registrar.sw);
-        info.setGusta(Registrar.tog);
+        info.setUsuario(Registrar.usr);
+        String pass = Registrar.password;
+        info.setPassword(pass);
+        info.setCel(Registrar.numero);
+        info.setDate(Registrar.fecha);
+        info.setConocer(Registrar.box);
+        info.setCorreo(Registrar.email);
+        info.setRegion(Registrar.region);
+        info.setSexo(Registrar.activado);
+        info.setActivado(Registrar.sw);
+        info.setNombre(Registrar.nom);
     }
     public static void vaciaJson(String json){
         json = null;
     }
-
-
+    //Metodos encuentra contrasena
     public static void encuentra(String cadena){
         for(MyInfo info: Olvide.list){
-            if(Login.persona.equals(info.getNombre())){
+            if(Login.usr.equals(info.getUsuario())){
                 cadena = "El usuario existe, recuerde la contraseña";
             }else{
                 cadena = "El usuario no existe, recuerde todo";

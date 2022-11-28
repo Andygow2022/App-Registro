@@ -5,13 +5,18 @@
       <map>
         <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/drawable/ic_launcher_background.xml" value="0.102" />
         <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/drawable/splash.xml" value="0.1" />
+        <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/activity_2.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/activity_3.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/activity_list.xml" value="0.22" />
         <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/activity_login.xml" value="0.2318840579710145" />
         <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/activity_menu.xml" value="0.19010416666666666" />
-        <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/activity_olvide.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/activity_main2.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/activity_menu.xml" value="0.18" />
+        <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/activity_olvide.xml" value="0.1" />
         <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/activity_registrar.xml" value="0.1838905775075988" />
         <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/form.xml" value="0.25" />
         <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/layout/login.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/soria/AndroidStudioProjects/MySplashAndy/app/src/main/res/menu/main_menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

@@ -2,6 +2,14 @@ package com.example.mysplashandy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import com.example.mysplashandy.des.MyDesUtil;
 import com.example.mysplashandy.json.MyInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -12,31 +20,32 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-
 
 public class Login extends AppCompatActivity {
+    //DES
+    public static final String KEY = "+4xij6jQRSBdCymMxweza/uMYo+o0EUg";
+    private String testClaro = "Hola mundo";
+    private String testDesCifrado;
+    //Atributos
+    public String correo;
+    public String mensaje;
     public static List<MyInfo> list;
     public static String TAG = "mensaje";
+    public static String TOG = "error";
     public static String json = null;
-    public static String persona,pass;
+    public static String usr,pswd;
     private Button button1, button2, button3;
+    public MyDesUtil myDesUtil= new MyDesUtil().addStringKeyBase64(KEY);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        button2 = findViewById(R.id.botonRgt);
-        button1 = findViewById(R.id.botonInc);
-        button3 = findViewById(R.id.botonOlvi);
-        EditText user = findViewById(R.id.editUsr);
-        EditText contra = findViewById(R.id.editPass);
+        button2 = findViewById(R.id.buttonM);
+        button1 = findViewById(R.id.recuperar);
+        button3 = findViewById(R.id.button3);
+        EditText usuario = findViewById(R.id.user);
+        EditText pswds = findViewById(R.id.mail);
         Read();
         json2List(json);
         if (json == null || json.length() == 0){
@@ -46,10 +55,9 @@ public class Login extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                persona = String.valueOf(user.getText());
-                pass = String.valueOf(contra.getText())+ persona;
-                pass = Metodo.bytesToHex(Metodo.createSha1(pass));
-                acceso(persona , pass);
+                usr = String.valueOf(usuario.getText());
+                pswd = String.valueOf(pswds.getText());
+                acceso(usr , pswd);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
@@ -62,14 +70,8 @@ public class Login extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                persona = String.valueOf(user.getText());
-                pass = Metodo.bytesToHex(Metodo.createSha1(String.valueOf(contra.getText())));
-                if(persona.equals("")||pass.equals("")){
-                    Toast.makeText(getApplicationContext(), "Completa los apartados", Toast.LENGTH_LONG).show();
-                }else{
-                    Intent intent = new Intent(Login.this,Olvide.class);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(Login.this, Olvide.class);
+                startActivity(intent);
             }
         });
     }
@@ -85,6 +87,7 @@ public class Login extends AppCompatActivity {
             fileInputStream = new FileInputStream(file);
             fileInputStream.read(bytes);
             json=new String(bytes);
+            json= myDesUtil.desCifrar(json);
             Log.d(TAG,json);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -128,26 +131,19 @@ public class Login extends AppCompatActivity {
     public void acceso(String usr , String pswd){
         int i=0;
         if(usr.equals("")||pswd.equals("")){
-            Toast.makeText(getApplicationContext(), "Completa los apartados", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Llena los campos", Toast.LENGTH_LONG).show();
         }else{
             for(MyInfo myInfo : list){
-                if(myInfo.getNombre().equals(usr)&&myInfo.getContrasena().equals(pswd)){
+                if(myInfo.getUsuario().equals(usr)&&myInfo.getPassword().equals(pswd)){
                     Intent intent = new Intent(Login.this, Menu.class);
+                    intent.putExtra("Objeto", myInfo);
                     startActivity(intent);
                     i=1;
                 }
             }
             if(i==0){
-                Toast.makeText(getApplicationContext(), "La contraseña y el usuario no coinciden", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "El usuario o contraseña son incorrectos", Toast.LENGTH_LONG).show();
             }
-        }
-    }
-    public void olvidar_contrasena(String usr, String pswd){
-        if(usr.equals("")||pswd.equals("")){
-            Toast.makeText(getApplicationContext(), "Apartados vacios", Toast.LENGTH_LONG).show();
-        }else{
-            Intent intent = new Intent(Login.this,Olvide.class);
-            startActivity(intent);
         }
     }
 }

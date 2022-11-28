@@ -1,26 +1,75 @@
 package com.example.mysplashandy.json;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyInfo implements Serializable {
-
-    private String nombre;
+    private String usuario;
+    private String password;
     private String correo;
-    private String contrasena;
-    private String numero;
-    private String fecha;
-    private String edad;
-    private String[] escuela;
-    private Boolean gen;
-    private Boolean noti;
-    private Boolean gusta;
+    private String[] conocer;
+    private Boolean sexo;
+    private String date;
+    private String cel;
+    private String region;
+    private Boolean activado;
+    private String nombre;
+
+    public List<MyData> getContras() {
+        return contras;
+    }
+
+    public void setContras(List<MyData> contras) {
+        this.contras = contras;
+    }
+
+    private List<MyData> contras= new ArrayList<>();
+
+
+
+    public Boolean getActivado() {
+        return activado;
+    }
+
+    public void setActivado(Boolean activado) {
+        this.activado = activado;
+    }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String user) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+
+    public MyInfo() {
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getCorreo() {
@@ -31,67 +80,35 @@ public class MyInfo implements Serializable {
         this.correo = correo;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String[] getConocer() {
+        return conocer;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setConocer(String[] conocer) {
+        this.conocer = conocer;
     }
 
-    public String getNumero() {
-        return numero;
+    public Boolean getSexo() {
+        return sexo;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setSexo(Boolean sexo) {
+        this.sexo = sexo;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getDate() {
+        return date;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getEdad() {
-        return edad;
+    public String getCel() {
+        return cel;
     }
 
-    public void setEdad(String edad) {
-        this.edad = edad;
-    }
-
-    public String[] getEscuela() {
-        return escuela;
-    }
-
-    public void setEscuela(String[] escuela) {
-        this.escuela = escuela;
-    }
-
-    public Boolean getGen() {
-        return gen;
-    }
-
-    public void setGen(Boolean gen) {
-        this.gen = gen;
-    }
-
-    public Boolean getNoti() {
-        return noti;
-    }
-
-    public void setNoti(Boolean noti) {
-        this.noti = noti;
-    }
-
-    public Boolean getGusta() {
-        return gusta;
-    }
-
-    public void setGusta(Boolean gusta) {
-        this.gusta = gusta;
+    public void setCel(String cel) {
+        this.cel = cel;
     }
 }
